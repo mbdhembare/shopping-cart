@@ -14,6 +14,15 @@
    - orange.jpg by Mae Mu
    - strawberry.jpg by Allec Gomes
 */
+
+/* Place stand out suggestions here (stand out suggestions can be found at the bottom of the project rubric.)*/
+
+/* The following is for running unit tests. 
+   To fully complete this project, it is expected that all tests pass.
+   Run the following command in terminal to run tests
+   npm run test
+*/
+
 const products = [
   {
     name: "Cherry",
@@ -138,14 +147,6 @@ function pay(amount) {
   }
   return balance;
 }
-
-/* Place stand out suggestions here (stand out suggestions can be found at the bottom of the project rubric.)*/
-
-/* The following is for running unit tests. 
-   To fully complete this project, it is expected that all tests pass.
-   Run the following command in terminal to run tests
-   npm run test
-*/
 
 module.exports = {
   products,
