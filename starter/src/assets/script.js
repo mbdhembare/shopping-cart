@@ -57,7 +57,6 @@
 
 /* Place stand out suggestions here (stand out suggestions can be found at the bottom of the project rubric.)*/
 
-
 /* The following is for running unit tests. 
    To fully complete this project, it is expected that all tests pass.
    Run the following command in terminal to run tests
@@ -65,15 +64,38 @@
 */
 
 module.exports = {
-   products,
-   cart,
-   addProductToCart,
-   increaseQuantity,
-   decreaseQuantity,
-   removeProductFromCart,
-   cartTotal,
-   pay, 
-   emptyCart,
-   /* Uncomment the following line if completing the currency converter bonus */
-   // currency
-}
+  products,
+  cart,
+  addProductToCart,
+  increaseQuantity,
+  decreaseQuantity,
+  removeProductFromCart,
+  cartTotal,
+  pay,
+  emptyCart,
+  /* Uncomment the following line if completing the currency converter bonus */
+  // currency
+};
+
+const products = [];
+const product1 = {
+  name: "Cherry",
+  price: 30,
+  quantity: 2,
+  productId: 101,
+  image: "../images/cherry.jpg",
+};
+const product2 = {
+  name: "Orange",
+  price: 40,
+  quantity: 1,
+  productId: 102,
+  image: "../images/orange.jpg",
+};
+const product3 = {
+  name: "Strawberry",
+  price: 50,
+  quantity: 3,
+  productId: 103,
+  image: "../images/strawberry.jpg",
+};
