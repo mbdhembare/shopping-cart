@@ -15,21 +15,6 @@
    - strawberry.jpg by Allec Gomes
 */
 
-/* Create a function named cartTotal that has no parameters
-  - cartTotal should iterate through the cart to get the total cost of all products
-  - cartTotal should return the total cost of the products in the cart
-  Hint: price and quantity can be used to determine total cost
-*/
-
-/* Create a function called emptyCart that empties the products from the cart */
-
-/* Create a function named pay that takes in an amount as an argument
-  - amount is the money paid by customer
-  - pay will return a negative number if there is a remaining balance
-  - pay will return a positive number if money should be returned to customer
-  Hint: cartTotal function gives us cost of all the products in the cart  
-*/
-
 /* Place stand out suggestions here (stand out suggestions can be found at the bottom of the project rubric.)*/
 
 /* The following is for running unit tests. 
@@ -77,8 +62,7 @@ function checkProduct(productList, productId) {
 */
 function addProductToCart(productId) {
   const product = checkProduct(products, productId);
-  if (!product) return;
-  else {
+  if (product) {
     product.quantity++;
     if (!cart.includes(product)) {
       cart.push(product);
@@ -108,7 +92,7 @@ function decreaseQuantity(productId) {
     product.quantity--;
   }
   if (product.quantity === 0) {
-    //remove product
+    removeProductFromCart(productId);
   }
 }
 
@@ -119,10 +103,49 @@ function decreaseQuantity(productId) {
 */
 function removeProductFromCart(productId) {
   const productIndex = cart.findIndex((p) => p.productId === productId);
-  if (productIndex != -1) {
-    cart[productIndex].quantity === 0;
+  if (productIndex !== -1) {
+    cart[productIndex].quantity = 0;
     cart.splice(productIndex, 1);
   }
+}
+
+/* Create a function named cartTotal that has no parameters
+  - cartTotal should iterate through the cart to get the total cost of all products
+  - cartTotal should return the total cost of the products in the cart
+  Hint: price and quantity can be used to determine total cost
+*/
+function cartTotal() {
+  let total = 0;
+  cart.forEach((product) => {
+    if (product.quantity > 0) {
+      total += product.quantity * product.price;
+    }
+  });
+  return total;
+}
+
+/* Create a function called emptyCart that empties the products from the cart */
+function emptyCart() {
+  cart.forEach((product) => {
+    removeProductFromCart(product.productId);
+  });
+}
+
+/* Create a function named pay that takes in an amount as an argument
+  - amount is the money paid by customer
+  - pay will return a negative number if there is a remaining balance
+  - pay will return a positive number if money should be returned to customer
+  Hint: cartTotal function gives us cost of all the products in the cart  
+*/
+let totalPaid = 0;
+function pay(amount) {
+  totalPaid += amount;
+  let balance = totalPaid - cartTotal();
+  if (balance >= 0) {
+    totalPaid = 0;
+    emptyCart();
+  }
+  return balance;
 }
 
 module.exports = {
