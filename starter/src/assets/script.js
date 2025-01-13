@@ -15,31 +15,6 @@
    - strawberry.jpg by Allec Gomes
 */
 
-/* Declare an empty array named cart to hold the items in the cart */
-
-/* Create a function named addProductToCart that takes in the product productId as an argument
-  - addProductToCart should get the correct product based on the productId
-  - addProductToCart should then increase the product's quantity
-  - if the product is not already in the cart, add it to the cart
-*/
-
-/* Create a function named increaseQuantity that takes in the productId as an argument
-  - increaseQuantity should get the correct product based on the productId
-  - increaseQuantity should then increase the product's quantity
-*/
-
-/* Create a function named decreaseQuantity that takes in the productId as an argument
-  - decreaseQuantity should get the correct product based on the productId
-  - decreaseQuantity should decrease the quantity of the product
-  - if the function decreases the quantity to 0, the product is removed from the cart
-*/
-
-/* Create a function named removeProductFromCart that takes in the productId as an argument
-  - removeProductFromCart should get the correct product based on the productId
-  - removeProductFromCart should update the product quantity to 0
-  - removeProductFromCart should remove the product from the cart
-*/
-
 /* Create a function named cartTotal that has no parameters
   - cartTotal should iterate through the cart to get the total cost of all products
   - cartTotal should return the total cost of the products in the cart
@@ -63,6 +38,93 @@
    npm run test
 */
 
+const products = [
+  {
+    name: "Cherry",
+    price: 10,
+    quantity: 0,
+    productId: 1,
+    image: "images/cherry.jpg",
+  },
+  {
+    name: "Orange",
+    price: 20,
+    quantity: 0,
+    productId: 2,
+    image: "images/orange.jpg",
+  },
+  {
+    name: "Strawberry",
+    price: 30,
+    quantity: 0,
+    productId: 3,
+    image: "images/strawberry.jpg",
+  },
+];
+
+/* Declare an empty array named cart to hold the items in the cart */
+const cart = [];
+
+//check if the product with this productId present in our products or not / return that product
+function checkProduct(productList, productId) {
+  return productList.find((p) => p.productId === productId);
+}
+
+/* Create a function named addProductToCart that takes in the product productId as an argument
+  - addProductToCart should get the correct product based on the productId
+  - addProductToCart should then increase the product's quantity
+  - if the product is not already in the cart, add it to the cart
+*/
+function addProductToCart(productId) {
+  const product = checkProduct(products, productId);
+  if (!product) return;
+  else {
+    product.quantity++;
+    if (!cart.includes(product)) {
+      cart.push(product);
+    }
+  }
+}
+
+/* Create a function named increaseQuantity that takes in the productId as an argument
+  - increaseQuantity should get the correct product based on the productId
+  - increaseQuantity should then increase the product's quantity
+*/
+function increaseQuantity(productId) {
+  const product = checkProduct(products, productId);
+  if (product) {
+    product.quantity++;
+  }
+}
+
+/* Create a function named decreaseQuantity that takes in the productId as an argument
+  - decreaseQuantity should get the correct product based on the productId
+  - decreaseQuantity should decrease the quantity of the product
+  - if the function decreases the quantity to 0, the product is removed from the cart
+*/
+function decreaseQuantity(productId) {
+  const product = checkProduct(products, productId);
+  if (product) {
+    product.quantity--;
+  }
+  if (product.quantity === 0) {
+    //remove product
+  }
+}
+
+/* Create a function named removeProductFromCart that takes in the productId as an argument
+  - removeProductFromCart should get the correct product based on the productId
+  - removeProductFromCart should update the product quantity to 0
+  - removeProductFromCart should remove the product from the cart
+*/
+function removeProductFromCart(productId) {
+  const productIndex = cart.findIndex((p) => p.productId === productId);
+  if (productIndex != -1) {
+    cart[productIndex].quantity === 0;
+    cart.splice(productIndex, 1);
+  }
+}
+
 module.exports = {
   products,
   cart,
@@ -75,27 +137,4 @@ module.exports = {
   emptyCart,
   /* Uncomment the following line if completing the currency converter bonus */
   // currency
-};
-
-const products = [];
-const product1 = {
-  name: "Cherry",
-  price: 30,
-  quantity: 2,
-  productId: 101,
-  image: "../images/cherry.jpg",
-};
-const product2 = {
-  name: "Orange",
-  price: 40,
-  quantity: 1,
-  productId: 102,
-  image: "../images/orange.jpg",
-};
-const product3 = {
-  name: "Strawberry",
-  price: 50,
-  quantity: 3,
-  productId: 103,
-  image: "../images/strawberry.jpg",
 };
