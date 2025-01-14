@@ -105,21 +105,21 @@ When the tests run, you will see a bunch of information come up in the terminal 
 
 Step 1: Review the starter code  
 Step 2: Build the products  
-Step 3: Create the cart functionality. 
+Step 3: Create the cart functionality.
 
 - `addProductToCart()`
 - `increaseQuantity()`
 - `decreaseQuantity()`
 - `removeProductFromCart()`
 
-Step 4: Create the Checkout Functionality. 
+Step 4: Create the Checkout Functionality.
 
 - `cartTotal()`
 - `pay()`
 
 Step 5: REFACTOR!  
 Step 6: Re-test the user interface  
-Step 7: [Optional] Add extra features 
+Step 7: [Optional] Add extra features
 
 - Remove all items from the cart using an `emptyCart` function.
 - Integrate a currency switcher to switch between USD, EUR, and YEN.
@@ -134,3 +134,5 @@ Step 7: [Optional] Add extra features
 ## License
 
 [License](LICENSE.txt)
+
+![Screenshot](<starter/src/images/Screenshot%20(158).png>)
